@@ -1,0 +1,3 @@
+class resource-defaults::services {
+
+}
