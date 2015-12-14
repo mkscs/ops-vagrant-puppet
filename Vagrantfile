@@ -1,1 +1,0 @@
-vagrantfiles/current/vagrantfile

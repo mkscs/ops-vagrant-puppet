@@ -1,0 +1,20 @@
+require_relative 'vagrant_rancheros_guest_plugin.rb'
+$rancher_ip = '10.0.3.10'
+
+Vagrant.configure(2) do |config|
+
+  config.vm.provider :virtualbox do |v|
+    v.check_guest_additions     = false
+    v.functional_vboxsf         = false
+  end
+  
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  
+  config.vm.define "rancher", autostart: false do |rancher|
+    rancher.vm.box                = "rancheros-latest"
+    rancher.ssh.username          = "rancher"
+    rancher.ssh.insert_key        = false
+    
+    rancher.vm.network :private_network, ip: $rancher_ip
+  end
+end

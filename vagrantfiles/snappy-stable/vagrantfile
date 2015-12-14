@@ -1,0 +1,21 @@
+# $snappy_share = ""
+# $snappy_ip    = '10.0.1.10'
+# private_network with NFS is not currently working
+
+Vagrant.configure(2) do |config|
+
+  config.vm.provider :virtualbox do |v|
+    v.check_guest_additions     = false
+    v.functional_vboxsf         = false
+  end
+  
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  
+  config.vm.define "snappy", autostart: false do |snappy|
+    snappy.vm.box   = "snappy-stable"
+ 
+   # snappy.vm.network :private_network, ip: $snappy_ip
+   # snappy.vm.synced_folder $snappy_share, "/home/vagrant/projects", type: "nfs",
+   #   mount_options: ['rw', 'vers=3', 'tcp', 'fsc']
+  end
+end
