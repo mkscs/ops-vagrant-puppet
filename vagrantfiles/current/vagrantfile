@@ -1,4 +1,4 @@
-$ubuntu_share = ""
+$ubuntu_share = "/Users/mscasny/Dropbox/Ops/ops-vagrant-puppet-local/ubuntu_share"
 $ubuntu_ip    = '10.0.1.10'
 
 Vagrant.configure(2) do |config|

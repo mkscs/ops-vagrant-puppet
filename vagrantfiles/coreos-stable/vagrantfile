@@ -1,4 +1,4 @@
-$coreos_share                 = ""
+$coreos_share                 = "/Users/mscasny/Dropbox/Ops/ops-vagrant-puppet-local/coreos_share"
 $coreos_ip                    = '10.0.2.10'
 
 Vagrant.configure(2) do |config|

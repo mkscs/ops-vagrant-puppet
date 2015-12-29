@@ -1,4 +1,4 @@
-# $snappy_share = ""
+# $snappy_share = "/Users/mscasny/Dropbox/Ops/ops-vagrant-puppet-local/snappy_share"
 # $snappy_ip    = '10.0.1.10'
 # private_network with NFS is not currently working
 

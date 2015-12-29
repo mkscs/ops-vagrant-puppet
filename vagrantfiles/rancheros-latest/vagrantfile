@@ -1,5 +1,6 @@
 require_relative 'vagrant_rancheros_guest_plugin.rb'
 $rancher_ip = '10.0.3.10'
+$rancheros_share = "/Volumes/My Passport for Mac/nfs_storage"
 
 Vagrant.configure(2) do |config|
 
@@ -7,14 +8,16 @@ Vagrant.configure(2) do |config|
     v.check_guest_additions     = false
     v.functional_vboxsf         = false
   end
-  
+
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  
+  config.vm.synced_folder $rancheros_share, "/home/rancher/storage", type: "nfs",
+   bsd__nfs_options: ['maproot=0:0'],
+   mount_options:    ['nolock', 'vers=3','udp']
+
   config.vm.define "rancher", autostart: false do |rancher|
     rancher.vm.box                = "rancheros-latest"
     rancher.ssh.username          = "rancher"
     rancher.ssh.insert_key        = false
-    
     rancher.vm.network :private_network, ip: $rancher_ip
   end
 end
